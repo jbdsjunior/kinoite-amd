@@ -1,45 +1,107 @@
----
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
-name: template
-# description will be included in the image's metadata
-description: This is my personal OS image.
+# config/recipe.yml
 
-# the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+name: kinoite-custom
+description: Fedora Kinoite Customizado (AMD/Virt/Dev)
+base-image: ghcr.io/ublue-os/kinoite-main
+image-version: latest
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
+  # 1. Copia arquivos locais (Repos e Justfile) para a imagem
   - type: files
     files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+      - source: files/etc/yum.repos.d
+        destination: /etc/yum.repos.d/
+      - source: files/usr/share/ublue-os/just
+        destination: /usr/share/ublue-os/just/
 
-  - type: dnf
-    repos:
-      copr:
-        - atim/starship
-    install:
-      packages:
-        - micro
-        - starship
+  # 2. Gerenciamento de Pacotes (Substitui seus scripts de install/remove)
+  - type: rpm-ostree
+    # O que remover (Seu script 02-bloat)
     remove:
-      packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      # - firefox
+      # - firefox-langpacks
+      # - fedora-flathub-remote
+      # - plasma-welcome-fedora
+      # - fedora-bookmarks
+      # - fedora-chromium-config
+      # - fedora-chromium-config-kde
+      # Removemos ferramentas de guest pois você é o HOST
+      # - open-vm-tools-desktop
+      # - open-vm-tools
+      # - qemu-guest-agent
+      # - spice-vdagent
+      # - virtualbox-guest-additions
+      # Codecs Free (para substituição)
+      # - libavcodec-free
+      # - libavdevice-free
+      # - libavfilter-free
+      # - libavformat-free
+      # - libavutil-free
+      # - libpostproc-free
+      # - libswresample-free
+      # - libswscale-free
+      # - fdk-aac-free
 
-  - type: default-flatpaks
-    configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
+    # O que instalar (Seus scripts 03 e 04 + Navegadores Oficiais)
+    install:
+      # --- Navegadores Oficiais (RPMs) ---
+      - code # VS Code
+      - google-chrome-stable
+      - brave-browser
 
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+      # --- Multimídia Full (RPM Fusion já vem habilitado no uBlue base) ---
+      - ffmpeg
+      - ffmpeg-libs
+      - fdk-aac
+      - ffmpegthumbnailer
+      - libavcodec-freeworld
+      - mesa-va-drivers-freeworld
+      - mesa-vdpau-drivers-freeworld
+      - pipewire-codec-aptx
+      # GStreamer
+      - gstreamer1-plugins-bad-free-extras
+      - gstreamer1-plugins-bad-freeworld
+      - gstreamer1-plugins-ugly
+      - gstreamer1-vaapi
+      - gstreamer1-plugin-openh264
+
+      # --- Virtualização e Dev ---
+      - qemu-kvm
+      - libvirt
+      - libvirt-client
+      - virt-install
+      - virt-manager
+      - edk2-ovmf
+      - swtpm
+      - bridge-utils
+      - guestfs-tools
+      - libguestfs-tools
+      - distrobox
+      - zsh
+      - htop
+      - nvtop
+      - fzf
+      - zstd
+
+  # 3. Habilitar Serviços (Systemd)
+  - type: systemd
+    system:
+      enabled:
+        - libvirtd
+
+  # 4. Argumentos de Kernel (Seu script 05)
+  - type: script
+    scripts:
+      - post-install.sh # Script auxiliar para kargs complexos se necessário,
+        # mas o uBlue recomenda usar o módulo 'kargs' se disponível
+        # ou bootc. Para simplificar, usamos kargs abaixo:
+
+  - type: kargs
+    args:
+      - amd_iommu=on
+      - iommu=pt
+      - kvm_amd.npt=1
+      - kvm_amd.avic=1
+      - kvm_amd.nested=1
+      - kvm_amd.sev=1
+      - transparent_hugepage=madvise
