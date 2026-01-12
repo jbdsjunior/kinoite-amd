@@ -14,8 +14,8 @@ modules:
       - edk2-ovmf # BIOS UEFI
       - swtpm # Emulador TPM (Win11)
       - guestfs-tools # Edição de imagens de disco
-      - libguestfs-tools
-      - bridge-utils
+      # - libguestfs-tools
+      # - bridge-utils
 
   - type: systemd
     system:

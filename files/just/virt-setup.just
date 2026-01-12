@@ -9,4 +9,5 @@ setup-kvm:
     @echo ">> [3/4] Criando e otimizando diretório local de imagens..."
     mkdir -p ${HOME}/.local/share/libvirt/images
     chattr +C ${HOME}/.local/share/libvirt/images
+    sudo virsh net-autostart default
     @echo ">> [4/4] Concluído! Reinicie o PC para aplicar os grupos."

@@ -5,10 +5,10 @@
 Imagem personalizada do **Fedora Kinoite**, otimizada para processadores **AMD Ryzen**, **Virtualização (KVM/Libvirt)** e **Multimídia**.
 
 ### ✨ Destaques
+
 * **AMD Otimizado:** Argumentos de kernel (`kargs`) para melhor performance e IOMMU.
 * **Virtualização Pronta:** KVM, QEMU, Libvirt e Virt-Manager pré-instalados e configurados.
 * **Multimídia:** Codecs RPM Fusion (FFmpeg, GStreamer) incluídos.
-* **Gaming/Tools:** Suporte a controles, Steam (via Flatpak) e ferramentas de sistema.
 
 ---
 
@@ -17,6 +17,7 @@ Imagem personalizada do **Fedora Kinoite**, otimizada para processadores **AMD R
 Abra o terminal e siga os passos para migrar do Fedora Kinoite padrão para esta imagem.
 
 ### 1. Rebase Inicial (Importação de Chaves)
+
 Mude para a imagem não assinada temporariamente:
 
 ```bash
@@ -41,7 +42,8 @@ systemctl reboot
 Para finalizar a configuração de permissões de virtualização e otimização de disco (BTRFS NoCOW), execute:
 
 ```bash
-just setup-kvm
+just --justfile /usr/share/ublue-os/just/60-kvm-setup.just
+
 systemctl reboot
 ```
 
