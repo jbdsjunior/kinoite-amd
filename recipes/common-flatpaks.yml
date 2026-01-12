@@ -23,7 +23,6 @@ modules:
           - com.usebottles.bottles
           - app.drey.Warp
           - io.missioncenter.MissionCenter
-          - org.freedesktop.Piper
 
           # --- AI & LLMs ---
           # - com.jeffser.Alpaca
@@ -34,19 +33,16 @@ modules:
           - com.brave.Browser
           - com.google.Chrome
           - com.microsoft.Edge
-          - org.kde.krdc
           - org.qbittorrent.qBittorrent
           - de.haeckerfelix.Fragments
           - com.stremio.Stremio
           - io.github.nozwock.Packet
-          # - io.kapsa.drive
           - io.github.kolunmi.Bazaar
 
           # --- Editores & Dev ---
           - com.visualstudio.code
           - com.visualstudio.code.tool.git-lfs
           # - dev.zed.Zed
-          - org.kde.kate
 
           # --- Mídia & Gráficos ---
           - org.videolan.VLC
@@ -56,6 +52,12 @@ modules:
           - org.kde.kolourpaint
           - org.kde.skanpage
           - dev.fredol.open-tv
+
+          # --- KDE Apps (Extra) ---
+          - org.kde.kcalc
+          - org.kde.okular
+          - org.kde.kate
+          - org.kde.krdc
 
           # --- GNOME Apps (Extra) ---
           - org.gnome.Calculator
@@ -72,7 +74,3 @@ modules:
           # - org.gnome.TextEditor
           - re.sonny.Eloquent
           - de.capypara.FieldMonitor
-
-          # --- KDE Apps (Extra) ---
-          - org.kde.kcalc
-          - org.kde.okular
