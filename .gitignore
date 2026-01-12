@@ -1,3 +1,6 @@
 cosign.key
 cosign.private
+.vscode
+.github
 /Containerfile
+/.bluebuild-scripts_*
