@@ -1,5 +1,10 @@
 modules:
   - type: rpm-ostree
+    remove:
+      - firefox
+      - firefox-langpacks
+      - htop
+
     install:
       # --- Utilitários do Sistema ---
       - langpacks-pt_BR
@@ -11,12 +16,12 @@ modules:
       - podman-compose
       - rclone
       - rclone-browser
-      - btrfs-assistant
+      # - btrfs-assistant
       - network-manager-applet
 
       # --- Apps Proprietários ---
-      - code
-      - brave-browser
+      # - code
+      # - brave-browser
 
       # --- KDE & Apps Nativos ---
       - kdepim-addons

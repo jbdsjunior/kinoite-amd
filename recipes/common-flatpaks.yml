@@ -22,12 +22,11 @@ modules:
           - com.ranfdev.DistroShelf
           - com.usebottles.bottles
           - app.drey.Warp
-          - org.gnome.Boxes
-          - org.freedesktop.Piper
 
           # --- Internet & Cloud ---
+          - com.brave.Browser
           - com.google.Chrome
-          - org.kde.ktorrent
+          - com.microsoft.Edge
           - org.kde.krdc
           - org.qbittorrent.qBittorrent
           - com.stremio.Stremio
@@ -36,7 +35,7 @@ modules:
           - io.github.kolunmi.Bazaar
 
           # --- Editores & Dev ---
-          - dev.zed.Zed
+          # - dev.zed.Zed
           - org.kde.kate
 
           # --- Mídia & Gráficos ---
