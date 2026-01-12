@@ -1,0 +1,63 @@
+modules:
+  - type: default-flatpaks
+    configurations:
+      - scope: user
+        notify: false
+        repo:
+          title: Flathub (user)
+
+      - notify: false
+        repo:
+          title: Flathub (system)
+        scope: system
+        install:
+          # --- Produtividade & Tools ---
+          - md.obsidian.Obsidian
+          - io.github.alainm23.planify
+          - org.qownnotes.QOwnNotes
+          - com.github.tchx84.Flatseal
+          - io.github.flattool.Warehouse
+          - it.mijorus.gearlever
+          - io.github.prateekmedia.appimagepool
+          - com.ranfdev.DistroShelf
+          - com.usebottles.bottles
+          - app.drey.Warp
+          - org.gnome.Boxes
+          - org.freedesktop.Piper
+
+          # --- Internet & Cloud ---
+          - com.google.Chrome
+          - org.kde.ktorrent
+          - org.kde.krdc
+          - org.qbittorrent.qBittorrent
+          - com.stremio.Stremio
+          - io.github.nozwock.Packet
+          - io.kapsa.drive
+          - io.github.kolunmi.Bazaar
+
+          # --- Editores & Dev ---
+          - dev.zed.Zed
+          - org.kde.kate
+
+          # --- Mídia & Gráficos ---
+          - org.kde.kolourpaint
+          - org.kde.elisa
+          - org.kde.skanpage
+          - dev.fredol.open-tv
+
+          # --- GNOME Apps (Extra) ---
+          - org.gnome.Calculator
+          - org.gnome.Calendar
+          - org.gnome.Characters
+          - org.gnome.DejaDup
+          - org.gnome.Logs
+          - org.gnome.Papers
+          - org.gnome.Showtime
+          - org.gnome.TextEditor
+          - org.gnome.Weather
+          - org.gnome.baobab
+          - org.gnome.gitlab.somas.Apostrophe
+          - re.sonny.Eloquent
+          - de.capypara.FieldMonitor
+          - de.haeckerfelix.Fragments
+          - io.missioncenter.MissionCenter

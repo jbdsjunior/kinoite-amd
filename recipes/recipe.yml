@@ -1,85 +1,14 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: kinoite-amd
-description: "Customized Fedora Kinoite image (AMD/Virt/Multimedia) based on BlueBuild"
+description: "Customized Fedora Kinoite image (AMD/Virt/Multimedia)"
 base-image: ghcr.io/ublue-os/kinoite-main
 image-version: latest
 
 modules:
-  - type: rpm-ostree
-    install:
-      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-%OS_VERSION%.noarch.rpm
-      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-%OS_VERSION%.noarch.rpm
-
-  - type: rpm-ostree
-    # remove:
-    #   # --- Codecs Limitados ---
-    #   - libavcodec-free
-    #   - libavdevice-free
-    #   - libavfilter-free
-    #   - libavformat-free
-    #   - libavutil-free
-    #   - libpostproc-free
-    #   - libswresample-free
-    #   - libswscale-free
-    #   - ffmpeg-free
-    #   - fdk-aac-free
-    #   - mesa-va-drivers
-
-  - type: rpm-ostree
-    install:
-      # --- Utilitários do Sistema ---
-      - langpacks-pt_BR
-      - distrobox
-      - kmodtool
-      - akmods
-      - lm_sensors
-      - fastfetch
-
-      # --- Multimídia Full & Codecs ---
-      # - ffmpeg
-      # - ffmpeg-libs
-      # - fdk-aac
-      # - ffmpegthumbnailer
-      # - libavcodec-freeworld
-      # - mesa-va-drivers-freeworld
-      # - mesa-vdpau-drivers-freeworld
-      # - pipewire-codec-aptx
-      # - gstreamer1-plugins-bad-free-extras
-      # - gstreamer1-plugins-bad-freeworld
-      # - gstreamer1-plugins-ugly
-      # - gstreamer1-vaapi
-      # - gstreamer1-plugin-openh264
-
-      # --- Apps GUI (Do seu recipe original) ---
-      - gwenview
-      - okular
-
-      # Fontes
-      - rsms-inter-fonts
-      - rsms-inter-vf-fonts
-
-  # - type: systemd
-  #   system:
-  #     enabled:
-  #       - libvirtd
-
-  - type: default-flatpaks
-    configurations:
-      - notify: false
-        scope: system
-        install:
-          - com.github.tchx84.Flatseal
-          - org.kde.haruna
-          - org.kde.kcalc
-
-  # - type: kargs
-  #   kargs:
-  #     - amd_iommu=on
-  #     - iommu=pt
-  #     - kvm_amd.npt=1
-  #     - kvm_amd.avic=1
-  #     - kvm_amd.nested=1
-  #     - kvm_amd.sev=1
-  #     - transparent_hugepage=madvise
+  - from-file: common-repos.yml
+  - from-file: common-packages.yml
+  - from-file: common-flatpaks.yml
+  - from-file: common-systemd.yml
+  - from-file: common-kargs.yml
 
   - type: signing

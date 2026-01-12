@@ -1,0 +1,6 @@
+modules:
+  - type: systemd
+    system:
+      enabled:
+        - libvirtd
+        - qemu-guest-agent
