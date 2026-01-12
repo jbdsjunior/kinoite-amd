@@ -1,20 +1,19 @@
 modules:
   - type: rpm-ostree
     install:
-      - qemu-kvm
-      - libvirt
-      - libvirt-client
+      # --- Base KVM/QEMU ---
+      - qemu-kvm # Virtualizador nativo
+      - libvirt # Serviço principal
+      - libvirt-client # Ferramentas de terminal (virsh)
 
       # --- Interface & Tools ---
       - virt-manager # Interface Gráfica
-      - virt-install # Criação de VM via linha de comando
+      - virt-install # Instalação via CLI
 
-      # --- Suporte Moderno (Essencial para Windows 11) ---
-      - edk2-ovmf # Suporte a UEFI (BIOS moderno)
-      - swtpm # Emulador TPM (Exigido pelo Win11)
-
-      # --- Manipulação de Imagens (Opcional, mas útil) ---
-      - guestfs-tools # Permite editar imagens de disco (virt-customize)
+      # --- Suporte Moderno ---
+      - edk2-ovmf # BIOS UEFI
+      - swtpm # Emulador TPM (Win11)
+      - guestfs-tools # Edição de imagens de disco
 
   - type: systemd
     system:
@@ -22,11 +21,14 @@ modules:
         - libvirtd
         - qemu-guest-agent
 
+  # --- Injeção do Arquivo Just ---
+  # Copia o arquivo da pasta 'files/just' do repo para o sistema
   - type: files
     files:
       - source: just/virt-setup.just
-        destination: /usr/share/ublue-os/just/60-virt-setup.just
+        destination: /usr/share/ublue-os/just/60-kvm-setup.just
 
+  # --- Otimizações AMD ---
   - type: kargs
     kargs:
       - amd_iommu=on

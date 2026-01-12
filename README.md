@@ -1,75 +1,69 @@
-```markdown
+# Custom Kinoite (AMD Edition)
 
-# Custom Kinoite AMD
+[![build-ublue](https://github.com/jbdsjunior/kinoite-amd/actions/workflows/build.yml/badge.svg)](https://github.com/jbdsjunior/kinoite-amd/actions/workflows/build.yml)
 
-[![bluebuild build badge](https://github.com/jbdsjunior/kinoite-amd/actions/workflows/build.yml/badge.svg)](https://github.com/jbdsjunior/kinoite-amd/actions/workflows/build.yml)
+Imagem personalizada do **Fedora Kinoite**, otimizada para processadores **AMD Ryzen**, **Virtualização (KVM/Libvirt)** e **Multimídia**.
 
-Imagem personalizada do Fedora Kinoite, otimizada para processadores **AMD**, **Virtualização (KVM/Libvirt)** e **Multimídia**.
+### ✨ Destaques
+* **AMD Otimizado:** Argumentos de kernel (`kargs`) para melhor performance e IOMMU.
+* **Virtualização Pronta:** KVM, QEMU, Libvirt e Virt-Manager pré-instalados e configurados.
+* **Multimídia:** Codecs RPM Fusion (FFmpeg, GStreamer) incluídos.
+* **Gaming/Tools:** Suporte a controles, Steam (via Flatpak) e ferramentas de sistema.
+
+---
 
 ## 🚀 Instalação
 
-Para migrar de uma instalação existente do Fedora Kinoite/Silverblue para esta imagem:
+Abra o terminal e siga os passos para migrar do Fedora Kinoite padrão para esta imagem.
 
-### 1. Rebase inicial (Unsigned)
-Primeiro, mude para a imagem não assinada para importar as chaves corretamente:
+### 1. Rebase Inicial (Importação de Chaves)
+Mude para a imagem não assinada temporariamente:
 
 ```bash
 rpm-ostree rebase ostree-unverified-registry:ghcr.io/jbdsjunior/kinoite-amd:latest
 
 ```
 
-Reinicie o sistema:
+### 2. Ativar Verificação (Segurança)
+
+Após reiniciar, mude para a versão assinada para garantir atualizações seguras:
 
 ```bash
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/jbdsjunior/kinoite-amd:latest
 systemctl reboot
 
 ```
 
-### 2. Ativar Verificação (Signed)
-
-Após reiniciar, mude para a versão assinada para garantir a segurança e atualizações futuras:
-
-```bash
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/jbdsjunior/kinoite-amd:latest
-
-```
+---
 
 ## 🛠️ Pós-Instalação (Essencial)
 
-Esta imagem contém scripts de automação para configurar grupos de usuários e otimizações de disco (BTRFS NoCOW) para máquinas virtuais.
-
-Após o primeiro boot, abra o terminal e execute:
+Para finalizar a configuração de permissões de virtualização e otimização de disco (BTRFS NoCOW), execute:
 
 ```bash
 just setup-kvm
-
+systemctl reboot
 ```
 
-Isso irá configurar:
+> **O que isso faz?** Adiciona seu usuário aos grupos `libvirt/kvm` e cria a pasta de VMs com atributos de performance otimizados.
 
-* Adição do seu usuário aos grupos `libvirt` e `kvm`.
-* Criação e otimização das pastas de imagens (`/var/lib/libvirt/images`).
+---
 
-## 🔄 Como Reverter (Undo)
+## 🔄 Como Reverter
 
 Se precisar voltar para o Fedora Kinoite padrão:
 
 ```bash
-rpm-ostree rebase fedora:fedora/43/x86_64/kinoite
+rpm-ostree rebase fedora:fedora/$(rpm -E %fedora)/x86_64/kinoite
+systemctl reboot
 
 ```
 
-*(Substitua `43` pela versão atual do Fedora se necessário)*
+## 🔐 Verificação Manual (Opcional)
 
-## 🔐 Verificação Manual
-
-Para verificar a assinatura da imagem localmente usando `cosign`:
+Para verificar a assinatura da imagem localmente:
 
 ```bash
 cosign verify --key cosign.pub ghcr.io/jbdsjunior/kinoite-amd
-
-```
-
-```
 
 ```

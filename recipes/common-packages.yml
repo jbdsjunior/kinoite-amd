@@ -1,39 +1,36 @@
 modules:
   - type: rpm-ostree
+    # Remoção de bloatware ou duplicatas
     remove:
-      - firefox
+      - firefox # Usar versão Flatpak (mais segura)
       - firefox-langpacks
-      - htop
+      - htop # Prefira o btop ou fastfetch
 
     install:
-      # --- Utilitários do Sistema ---
-      - langpacks-pt_BR
-      - distrobox
-      - kmodtool
-      - akmods
-      - lm_sensors
-      - fastfetch
-      - podman-compose
-      - rclone
-      - rclone-browser
+      # --- Essenciais do Sistema ---
+      - langpacks-pt_BR # Traduções para Português
+      - distrobox # Containers para terminal (Ubuntu, Arch, etc)
+      - fastfetch # Exibe info do sistema (substituto bonito do neofetch)
+      - lm_sensors # Monitoramento de temperatura/hardware
+      - kmodtool # Ferramentas para módulos de kernel
+      - akmods # Compilação automática de módulos (drivers)
 
-      # --- KDE & Apps Nativos ---
-      # - gwenview
-      # - okular
-      # - kcalc
+      # --- Ferramentas Úteis ---
+      - podman-compose # Orquestração de containers (alternativa ao docker-compose)
+      - rclone # Sincronização com nuvem (GDrive, OneDrive) via terminal
 
-      # --- Multimídia Full & Codecs (RPM Fusion) ---
-      # O ffmpeg-libs geralmente já puxa o necessário.
-      - ffmpeg
-      - ffmpeg-libs
-      - ffmpegthumbnailer
-      - libavcodec-freeworld
+      # --- Multimídia (FFmpeg Completo) ---
+      - ffmpeg # O "canivete suíço" de vídeo/áudio
+      - ffmpeg-libs # Bibliotecas essenciais
+      - ffmpegthumbnailer # Gera miniaturas de vídeo no explorador de arquivos
+      - libavcodec-freeworld # Codecs adicionais não-livres
 
-      - libdvdcss
+      # --- Suporte a DVD/Vídeo ---
+      - libdvdcss # Necessário para ler DVDs protegidos
 
-      # --- Suporte a GStreamer e OpenH264 ---
+      # --- Plugins GStreamer (Para compatibilidade de Apps GNOME/KDE) ---
       - gstreamer1-plugins-bad-free-extras
       - gstreamer1-plugins-bad-freeworld
       - gstreamer1-plugins-ugly
-      - gstreamer1-vaapi
-      - gstreamer1-plugin-openh264
+      - gstreamer1-vaapi # Aceleração de hardware de vídeo
+      - gstreamer1-plugin-openh264 # Codec H.264 (padrão da web)
