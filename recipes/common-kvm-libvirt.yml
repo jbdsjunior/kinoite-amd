@@ -1,18 +1,31 @@
 modules:
   - type: rpm-ostree
     install:
-      # --- Virtualização (Grupo KVM/QEMU) ---
       - qemu-kvm
       - libvirt
       - libvirt-client
-      - virt-install
-      - virt-manager
+
+      # --- Interface & Tools ---
+      - virt-manager # Interface Gráfica
+      - virt-install # Criação de VM via linha de comando
+
+      # --- Suporte Moderno (Essencial para Windows 11) ---
+      - edk2-ovmf # Suporte a UEFI (BIOS moderno)
+      - swtpm # Emulador TPM (Exigido pelo Win11)
+
+      # --- Manipulação de Imagens (Opcional, mas útil) ---
+      - guestfs-tools # Permite editar imagens de disco (virt-customize)
 
   - type: systemd
     system:
       enabled:
         - libvirtd
         - qemu-guest-agent
+
+  - type: files
+    files:
+      - source: just/virt-setup.just
+        destination: /usr/share/ublue-os/just/60-virt-setup.just
 
   - type: kargs
     kargs:
