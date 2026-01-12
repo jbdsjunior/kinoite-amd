@@ -22,6 +22,13 @@ modules:
           - com.ranfdev.DistroShelf
           - com.usebottles.bottles
           - app.drey.Warp
+          - io.missioncenter.MissionCenter
+          - org.freedesktop.Piper
+
+          # --- AI & LLMs ---
+          # - com.jeffser.Alpaca
+          # - com.jeffser.Alpaca.Plugins.AMD
+          # - com.jeffser.Alpaca.Plugins.Ollama
 
           # --- Internet & Cloud ---
           - com.brave.Browser
@@ -29,18 +36,24 @@ modules:
           - com.microsoft.Edge
           - org.kde.krdc
           - org.qbittorrent.qBittorrent
+          - de.haeckerfelix.Fragments
           - com.stremio.Stremio
           - io.github.nozwock.Packet
-          - io.kapsa.drive
+          # - io.kapsa.drive
           - io.github.kolunmi.Bazaar
 
           # --- Editores & Dev ---
+          - com.visualstudio.code
+          - com.visualstudio.code.tool.git-lfs
           # - dev.zed.Zed
           - org.kde.kate
 
           # --- Mídia & Gráficos ---
-          # - org.kde.kolourpaint
+          - org.videolan.VLC
+          - org.kde.haruna
           - org.kde.elisa
+          - org.kde.gwenview
+          - org.kde.kolourpaint
           - org.kde.skanpage
           - dev.fredol.open-tv
 
@@ -52,11 +65,14 @@ modules:
           - org.gnome.Logs
           - org.gnome.Papers
           - org.gnome.Showtime
-          - org.gnome.TextEditor
           - org.gnome.Weather
           - org.gnome.baobab
           - org.gnome.gitlab.somas.Apostrophe
+          - org.gnome.gitlab.somas.Apostrophe.Plugin.TexLive
+          # - org.gnome.TextEditor
           - re.sonny.Eloquent
           - de.capypara.FieldMonitor
-          - de.haeckerfelix.Fragments
-          - io.missioncenter.MissionCenter
+
+          # --- KDE Apps (Extra) ---
+          - org.kde.kcalc
+          - org.kde.okular
