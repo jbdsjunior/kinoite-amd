@@ -16,31 +16,11 @@ modules:
       - podman-compose
       - rclone
       - rclone-browser
-      # - btrfs-assistant
-      - network-manager-applet
-
-      # --- Apps Proprietários ---
-      # - code
-      # - brave-browser
 
       # --- KDE & Apps Nativos ---
-      - kdepim-addons
-      - konsole
-      - plasma-browser-integration
-      - kde-partitionmanager
-      - plasma-discover
-      - PackageKit
-      - gwenview
-      - okular
-      - kcalc
-      - vlc
-
-      # --- Virtualização (Grupo KVM/QEMU) ---
-      - qemu-kvm
-      - libvirt
-      - libvirt-client
-      - virt-install
-      - virt-manager
+      # - gwenview
+      # - okular
+      # - kcalc
 
       # --- Multimídia Full & Codecs (RPM Fusion) ---
       # O ffmpeg-libs geralmente já puxa o necessário.

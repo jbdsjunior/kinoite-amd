@@ -1,10 +1,10 @@
 modules:
   - type: rpm-ostree
-    repos:
-      # VS Code Oficial (.repo)
-      - https://packages.microsoft.com/yumrepos/vscode/config.repo
-      # Brave Browser Oficial (.repo)
-      - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+    # repos:
+    #   # VS Code Oficial (.repo)
+    #   - https://packages.microsoft.com/yumrepos/vscode/config.repo
+    #   # Brave Browser Oficial (.repo)
+    #   - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 
     install:
       - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-%OS_VERSION%.noarch.rpm

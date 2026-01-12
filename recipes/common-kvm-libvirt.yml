@@ -1,0 +1,24 @@
+modules:
+  - type: rpm-ostree
+    install:
+      # --- Virtualização (Grupo KVM/QEMU) ---
+      - qemu-kvm
+      - libvirt
+      - libvirt-client
+      - virt-install
+      - virt-manager
+
+  - type: systemd
+    system:
+      enabled:
+        - libvirtd
+        - qemu-guest-agent
+
+  - type: kargs
+    kargs:
+      - amd_iommu=on
+      - iommu=pt
+      - kvm_amd.npt=1
+      - kvm_amd.avic=1
+      - kvm_amd.nested=1
+      - kvm_amd.sev=1

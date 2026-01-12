@@ -39,7 +39,7 @@ modules:
           - org.kde.kate
 
           # --- Mídia & Gráficos ---
-          - org.kde.kolourpaint
+          # - org.kde.kolourpaint
           - org.kde.elisa
           - org.kde.skanpage
           - dev.fredol.open-tv
