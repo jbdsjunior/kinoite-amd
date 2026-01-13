@@ -35,9 +35,13 @@ modules:
           - com.microsoft.Edge
           - org.qbittorrent.qBittorrent
           - de.haeckerfelix.Fragments
-          - com.stremio.Stremio
+
           - io.github.nozwock.Packet
           - io.github.kolunmi.Bazaar
+
+          # --- Mídia ---
+          - com.stremio.Stremio
+          - dev.fredol.open-tv
 
           # --- Editores & Dev ---
           - com.visualstudio.code
@@ -51,7 +55,6 @@ modules:
           - org.kde.gwenview
           - org.kde.kolourpaint
           - org.kde.skanpage
-          - dev.fredol.open-tv
 
           # --- KDE Apps (Extra) ---
           - org.kde.kcalc
