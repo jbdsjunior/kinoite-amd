@@ -36,6 +36,6 @@ modules:
       - gstreamer1-plugin-openh264 # Codec H.264 (padrão da web)
 
 
-        # Fonts #############################
-      - rsms-inter-fonts
-      - rsms-inter-vf-fonts
+      # Fonts #############################
+      # - rsms-inter-fonts
+      # - rsms-inter-vf-fonts
