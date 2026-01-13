@@ -34,3 +34,7 @@ modules:
       - gstreamer1-plugins-ugly
       - gstreamer1-vaapi # Aceleração de hardware de vídeo
       - gstreamer1-plugin-openh264 # Codec H.264 (padrão da web)
+
+        # Fonts #############################
+        - rsms-inter-fonts
+        - rsms-inter-vf-fonts
