@@ -59,7 +59,6 @@ modules:
 
       # Áudio Bluetooth (AptX / AAC melhorado)
       - pipewire-codec-aptx
-      - libfdk-aac-free # CUIDADO: O 'fdk-aac' (non-free) substitui este, mas às vezes dependências pedem.
         # SE DER ERRO: Remova esta linha, pois o 'fdk-aac' acima já cobre.
 
       # --- Plugins GStreamer (Para compatibilidade GNOME/KDE) ---
