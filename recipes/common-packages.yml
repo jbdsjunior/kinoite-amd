@@ -1,82 +1,50 @@
 modules:
   - type: rpm-ostree
-    # -------------------------------------------------------------------------
-    # SEÇÃO 1: REMOÇÕES (Debloat e Preparação para Swap)
-    # -------------------------------------------------------------------------
+    # Remoção de bloatware ou duplicatas
     remove:
-      # Navegador: Remove o Firefox RPM para usar a versão Flatpak (Padrão uBlue)
-      - firefox
+      - firefox # Usar versão Flatpak (mais segura)
       - firefox-langpacks
-
-      # Ferramentas: Remove o htop para usar alternativas (btop/nvtop)
-      - htop
+      - htop # Prefira o btop ou fastfetch
       - nvtop
 
-      # --- SWAP DE MULTIMÍDIA E DRIVERS ---
-      # Removemos as versões "free" (limitadas por patentes) do Fedora/uBlue
-      # para permitir a instalação das versões "freeworld" completas do RPM Fusion.
-      - fdk-aac-free # Codec AAC limitado
-      - libavcodec-free # Codecs de vídeo limitados
-      - libavdevice-free
-      - libavfilter-free
-      - libavformat-free
-      - libavutil-free
-      - libpostproc-free
-      - libswresample-free
-      - libswscale-free
-      - ffmpeg-free # FFmpeg limitado
-      - mesa-va-drivers # Aceleração de vídeo limitada (AMD/Intel)
-
-    # -------------------------------------------------------------------------
-    # SEÇÃO 2: INSTALAÇÕES (O que falta na uBlue)
-    # -------------------------------------------------------------------------
     install:
       # --- Essenciais do Sistema ---
       - langpacks-pt_BR # Traduções para Português
-      - terra-release # Gerenciamento de chaves do repo Terra (Fyra)
+      - distrobox # Containers para terminal (Ubuntu, Arch, etc)
+      - fastfetch # Exibe info do sistema (substituto bonito do neofetch)
+      - lm_sensors # Monitoramento de temperatura/hardware
+      - kmodtool # Ferramentas para módulos de kernel
+      - akmods # Compilação automática de módulos (drivers)
 
-      # Nota: 'distrobox' e 'just' JÁ VÊM na imagem uBlue, não precisa listar aqui.
+      # --- Ferramentas Úteis ---
+      # - podman-compose # Orquestração de containers (alternativa ao docker-compose)
+      - rclone # Sincronização com nuvem (GDrive, OneDrive) via terminal
+      - unrar
+      - p7zip
+      - p7zip-plugins
+      - icoextract-thumbnailer
+      - libdvdcss
+      # --- Multimídia (FFmpeg Completo) ---
+      - fdk-aac
+      - ffmpeg # O "canivete suíço" de vídeo/áudio
+      - ffmpeg-libs # Bibliotecas essenciais
+      - ffmpegthumbnailer # Gera miniaturas de vídeo no explorador de arquivos
+      - libavcodec-freeworld # Codecs adicionais não-livres
 
-      # --- Performance ---
-      - system76-scheduler # Otimiza prioridade de CPU para apps em foco
-      - zstd # Compressão rápida (Útil para manutenção)
-
-      # --- Monitoramento (Substitutos do htop) ---
-      - fastfetch # Info do sistema (estilo neofetch moderno)
-      - nvtop # Monitor de uso de GPU e processos de vídeo
-      - smartmontools # Monitoramento de saúde de SSD/HDD (S.M.A.R.T)
-
-      # --- Codecs e Drivers "Freeworld" (A versão Turbo) ---
-      # Só instalam porque removemos os conflitantes na seção 'remove' acima.
-      - ffmpeg # Versão completa
-      - ffmpeg-libs
-      - fdk-aac # Codec AAC completo (Fraunhofer)
-      - libavcodec-freeworld # Codecs extras
-      - ffmpegthumbnailer # Miniaturas de vídeo rápidas
-
-      # Aceleração de Hardware (Crítico para AMD/Intel)
-      - mesa-va-drivers-freeworld
-      - mesa-vdpau-drivers-freeworld
-
-      # Áudio Bluetooth (AptX / AAC melhorado)
+      # Áudio Bluetooth de alta qualidade
       - pipewire-codec-aptx
 
-      # --- Plugins GStreamer (Para compatibilidade GNOME/KDE) ---
+      # --- Suporte a DVD/Vídeo ---
+      - libdvdcss # Necessário para ler DVDs protegidos
+
+      # --- Plugins GStreamer (Para compatibilidade de Apps GNOME/KDE) ---
       - gstreamer1-plugins-bad-free-extras
       - gstreamer1-plugins-bad-freeworld
       - gstreamer1-plugins-ugly
-      - gstreamer1-vaapi
-      - gstreamer1-plugin-openh264
+      - gstreamer1-vaapi # Aceleração de hardware de vídeo
+      - gstreamer1-plugin-openh264 # Codec H.264 (padrão da web)
 
-      # --- Ferramentas Extras ---
-      - rclone # Sincronização Cloud
-      - unrar # Descompactar .rar
-      - p7zip # Suporte 7z
-      - p7zip-plugins
-      - icoextract-thumbnailer # Ícones de arquivos .exe
-      - libdvdcss # Leitura de DVDs protegidos
-
-      # --- Fontes ---
+      # Fonts #############################
       - rsms-inter-fonts
       - rsms-inter-vf-fonts
       - ms-core-fonts
