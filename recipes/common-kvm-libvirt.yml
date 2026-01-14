@@ -10,8 +10,8 @@ modules:
   - type: systemd
     system:
       enabled:
-        - libvirtd
-        - qemu-guest-agent
+        - libvirtd.service
+        - qemu-guest-agent.service
 
   - type: files
     files:

@@ -4,11 +4,12 @@ modules:
       - scope: user
         notify: false
         repo:
-          title: Flathub (user)
+          title: Flathub
         install:
           - com.brave.Browser
 
       - scope: system
         notify: false
         repo:
-          title: Flathub (system)
+          title: Flathub
+        install:
