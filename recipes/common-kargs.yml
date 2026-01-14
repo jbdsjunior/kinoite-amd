@@ -1,4 +1,3 @@
-modules:
-  - type: kargs
-    kargs:
-      - transparent_hugepage=madvise
+- type: kargs
+  kargs:
+    - transparent_hugepage=madvise

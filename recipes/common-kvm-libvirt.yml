@@ -1,49 +1,27 @@
-modules:
-  - type: dnf
-    install:
-      packages:
-        - "@virtualization"
-    remove:
-      packages:
-        - virt-viewer
+- type: dnf
+  install:
+    packages:
+      - "@virtualization"
+- type: rpm-ostree
+  remove:
+    - virt-viewer
 
-  # - type: rpm-ostree
-  #   install:
-  #     # --- Base KVM/QEMU ---
-  #     - qemu-kvm # Virtualizador nativo
-  #     - libvirt # Serviço principal
-  #     - libvirt-client # Ferramentas de terminal (virsh)
+- type: systemd
+  system:
+    enabled:
+      - libvirtd
+      - qemu-guest-agent
 
-  #     # --- Interface & Tools ---
-  #     - virt-manager # Interface Gráfica
-  #     - virt-install # Instalação via CLI
+- type: files
+  files:
+    - source: just/60-kvm-setup.just
+      destination: /usr/share/ublue-os/just/60-kvm-setup.just
 
-  #     # --- Suporte Moderno ---
-  #     - edk2-ovmf # BIOS UEFI
-  #     - swtpm # Emulador TPM (Win11)
-  #     - guestfs-tools # Edição de imagens de disco
-  #     # - libguestfs-tools
-  #     # - bridge-utils
-
-  - type: systemd
-    system:
-      enabled:
-        - libvirtd
-        - qemu-guest-agent
-
-  # --- Injeção do Arquivo Just ---
-  # Copia o arquivo da pasta 'files/just' do repo para o sistema
-  # - type: files
-  #   files:
-  #     - source: just/virt-setup.just
-  #       destination: /usr/share/ublue-os/just/60-kvm-setup.just
-
-  # --- Otimizações AMD ---
-  - type: kargs
-    kargs:
-      - amd_iommu=on
-      - iommu=pt
-      - kvm_amd.npt=1
-      - kvm_amd.avic=1
-      - kvm_amd.nested=1
-      - kvm_amd.sev=1
+- type: kargs
+  kargs:
+    - amd_iommu=on
+    - iommu=pt
+    - kvm_amd.npt=1
+    - kvm_amd.avic=1
+    - kvm_amd.nested=1
+    - kvm_amd.sev=1

@@ -1,5 +1,4 @@
-modules:
-  - type: systemd
-    system:
-      enabled:
-        - flatpak-update
+- type: systemd
+  system:
+    enabled:
+      - flatpak-update
