@@ -5,76 +5,10 @@ modules:
         notify: false
         repo:
           title: Flathub (user)
+        install:
+          - com.brave.Browser
 
-      - notify: false
+      - scope: system
+        notify: false
         repo:
           title: Flathub (system)
-        scope: system
-        install:
-          # --- Internet & Cloud ---
-          - com.brave.Browser
-          # - com.google.Chrome
-          # - com.microsoft.Edge
-
-          # - org.qbittorrent.qBittorrent
-          # - de.haeckerfelix.Fragments
-
-          # # --- Produtividade & Tools ---
-          # - md.obsidian.Obsidian
-          # - io.github.alainm23.planify
-          # - org.qownnotes.QOwnNotes
-          # - com.github.tchx84.Flatseal
-          # - io.github.flattool.Warehouse
-          # - it.mijorus.gearlever
-          # - io.github.prateekmedia.appimagepool
-          # - com.ranfdev.DistroShelf
-          # - com.usebottles.bottles
-          # - app.drey.Warp
-          # - io.missioncenter.MissionCenter
-
-          # # --- AI & LLMs ---
-          # - com.jeffser.Alpaca
-          # - com.jeffser.Alpaca.Plugins.AMD
-          # - com.jeffser.Alpaca.Plugins.Ollama
-
-          # - io.github.nozwock.Packet
-          # - io.github.kolunmi.Bazaar
-
-          # # --- Mídia ---
-          # - com.stremio.Stremio
-          # - dev.fredol.open-tv
-
-          # # --- Editores & Dev ---
-          # - com.visualstudio.code
-          # - com.visualstudio.code.tool.git-lfs
-          # - dev.zed.Zed
-
-          # # --- Mídia & Gráficos ---
-          # - org.videolan.VLC
-          # - org.kde.haruna
-          # - org.kde.elisa
-          # - org.kde.gwenview
-          # - org.kde.kolourpaint
-          # - org.kde.skanpage
-
-          # # --- KDE Apps (Extra) ---
-          # - org.kde.kcalc
-          # - org.kde.okular
-          # - org.kde.kate
-          # - org.kde.krdc
-
-          # # --- GNOME Apps (Extra) ---
-          # - org.gnome.Calculator
-          # - org.gnome.Calendar
-          # - org.gnome.Characters
-          # - org.gnome.DejaDup
-          # - org.gnome.Logs
-          # - org.gnome.Papers
-          # - org.gnome.Showtime
-          # - org.gnome.Weather
-          # - org.gnome.baobab
-          # - org.gnome.gitlab.somas.Apostrophe
-          # - org.gnome.gitlab.somas.Apostrophe.Plugin.TexLive
-          # - org.gnome.TextEditor
-          # - re.sonny.Eloquent
-          # - de.capypara.FieldMonitor
