@@ -22,16 +22,29 @@ modules:
       - nvtop
 
       # - fcitx5-configtool
-      # - fcitx5-hangul
-      # - fcitx5-libthai
-      # - fcitx5-mozc
       # - fcitx5-qt
-      # - fcitx5-sayura
-      # - fcitx5-unikey
       # - kcm-fcitx5
 
+      # Configs, libs, addons and filesystem layouts
+      - mozilla-filesystem
+      - braille-printer-app
+      - fcitx5-chinese-addons
+      - fcitx5-chinese-addons-data
+      - fcitx5-hangul
+      - fcitx5-libthai
+      - fcitx5-mozc
+      - fcitx5-sayura
+      - fcitx5-unikey
+      - ibus-anthy
+      - ibus-anthy-python
+      - ibus-chewing
+      - ibus-hangul
+      - ibus-libpinyin
+      - kasumi-common
+      - kasumi-unicode
+
     install:
-      # --- Essenciais do Sistema ---
+      # --- 1. Essenciais do Sistema e Drivers ---
       - langpacks-pt_BR
       - distrobox
       - fastfetch
@@ -42,34 +55,37 @@ modules:
       - plasma-discover-rpm-ostree
       - network-manager-applet # To customize MAC address randomization with a GUI
 
-      # --- Ferramentas Úteis ---
-      - rclone
-      - icoextract-thumbnailer
-
-      # - mesa-va-drivers-freeworld
-      # - mesa-vdpau-drivers-freeworld
-
-      # --- Multimídia (FFmpeg Completo) ---
-      # - fdk-aac
+      # --- 2. Codecs de Áudio e Vídeo (Compatibilidade Máxima) ---
       - ffmpeg
       - ffmpeg-libs
-      - ffmpegthumbnailer
       - libavcodec-freeworld
 
-      # Áudio Bluetooth de alta qualidade
-      # - pipewire-codec-aptx
+      # Codecs Bluetooth e Áudio
+      # - pipewire-codec-aptx # Suporte a aptX para Bluetooth
+      - lame # Encoder MP3
+      # libvpx e opus já são nativos do sistema, não é necessário listar
 
-      # --- Suporte a DVD/Vídeo ---
+      # Suporte a DVD/Vídeo Criptografado
       - libdvdcss
 
-      # --- Plugins GStreamer (Para compatibilidade de Apps GNOME/KDE) ---
+      # --- 3. Plugins GStreamer (Para GNOME/KDE Apps e Thumbnails) ---
       - gstreamer1-plugins-bad-free-extras
       - gstreamer1-plugins-bad-freeworld
       - gstreamer1-plugins-ugly
       - gstreamer1-vaapi
       - gstreamer1-plugin-openh264
 
-      # Fonts #############################
+      # --- 4. Ferramentas de Mídia ---
+      - ffmpegthumbnailer # Gerador de thumbnails de vídeo
+      - icoextract-thumbnailer # Gerador de thumbnails para arquivos .exe/.iso
+
+      # --- 5. Ferramentas Úteis (CLI) ---
+      - rclone
+
+      # --- 6. Fontes ---
       - rsms-inter-fonts
       - rsms-inter-vf-fonts
       - ms-core-fonts
+
+      # - mesa-va-drivers-freeworld
+      # - mesa-vdpau-drivers-freeworld
