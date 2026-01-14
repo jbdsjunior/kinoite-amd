@@ -15,10 +15,11 @@ modules:
           - com.brave.Browser
           # - com.google.Chrome
           # - com.microsoft.Edge
+
           # - org.qbittorrent.qBittorrent
           # - de.haeckerfelix.Fragments
 
-          # --- Produtividade & Tools ---
+          # # --- Produtividade & Tools ---
           # - md.obsidian.Obsidian
           # - io.github.alainm23.planify
           # - org.qownnotes.QOwnNotes
@@ -31,7 +32,7 @@ modules:
           # - app.drey.Warp
           # - io.missioncenter.MissionCenter
 
-          # --- AI & LLMs ---
+          # # --- AI & LLMs ---
           # - com.jeffser.Alpaca
           # - com.jeffser.Alpaca.Plugins.AMD
           # - com.jeffser.Alpaca.Plugins.Ollama
@@ -39,11 +40,11 @@ modules:
           # - io.github.nozwock.Packet
           # - io.github.kolunmi.Bazaar
 
-          # --- Mídia ---
+          # # --- Mídia ---
           # - com.stremio.Stremio
           # - dev.fredol.open-tv
 
-          # --- Editores & Dev ---
+          # # --- Editores & Dev ---
           # - com.visualstudio.code
           # - com.visualstudio.code.tool.git-lfs
           # - dev.zed.Zed
@@ -74,6 +75,6 @@ modules:
           # - org.gnome.baobab
           # - org.gnome.gitlab.somas.Apostrophe
           # - org.gnome.gitlab.somas.Apostrophe.Plugin.TexLive
-          # # - org.gnome.TextEditor
+          # - org.gnome.TextEditor
           # - re.sonny.Eloquent
           # - de.capypara.FieldMonitor
