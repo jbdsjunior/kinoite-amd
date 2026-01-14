@@ -25,23 +25,23 @@ modules:
       # - fcitx5-qt
       # - kcm-fcitx5
 
-      # Configs, libs, addons and filesystem layouts
-      - mozilla-filesystem
-      - braille-printer-app
-      - fcitx5-chinese-addons
-      - fcitx5-chinese-addons-data
-      - fcitx5-hangul
-      - fcitx5-libthai
-      - fcitx5-mozc
-      - fcitx5-sayura
-      - fcitx5-unikey
-      - ibus-anthy
-      - ibus-anthy-python
-      - ibus-chewing
-      - ibus-hangul
-      - ibus-libpinyin
-      - kasumi-common
-      - kasumi-unicode
+      # # Configs, libs, addons and filesystem layouts
+      # - mozilla-filesystem
+      # - braille-printer-app
+      # - fcitx5-chinese-addons
+      # - fcitx5-chinese-addons-data
+      # - fcitx5-hangul
+      # - fcitx5-libthai
+      # - fcitx5-mozc
+      # - fcitx5-sayura
+      # - fcitx5-unikey
+      # - ibus-anthy
+      # - ibus-anthy-python
+      # - ibus-chewing
+      # - ibus-hangul
+      # - ibus-libpinyin
+      # - kasumi-common
+      # - kasumi-unicode
 
     install:
       # --- 1. Essenciais do Sistema e Drivers ---
