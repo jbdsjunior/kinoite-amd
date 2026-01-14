@@ -5,6 +5,11 @@ base-image: ghcr.io/ublue-os/kinoite-main
 image-version: latest
 
 modules:
+  # - type: files
+  #   files:
+  #     - source: system
+  #       destination: /
+
   - from-file: common-repos.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml

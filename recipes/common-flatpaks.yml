@@ -11,6 +11,13 @@ modules:
           title: Flathub (system)
         scope: system
         install:
+          # --- Internet & Cloud ---
+          - com.brave.Browser
+          # - com.google.Chrome
+          # - com.microsoft.Edge
+          # - org.qbittorrent.qBittorrent
+          # - de.haeckerfelix.Fragments
+
           # --- Produtividade & Tools ---
           # - md.obsidian.Obsidian
           # - io.github.alainm23.planify
@@ -28,13 +35,6 @@ modules:
           # - com.jeffser.Alpaca
           # - com.jeffser.Alpaca.Plugins.AMD
           # - com.jeffser.Alpaca.Plugins.Ollama
-
-          # --- Internet & Cloud ---
-          - com.brave.Browser
-          # - com.google.Chrome
-          # - com.microsoft.Edge
-          # - org.qbittorrent.qBittorrent
-          # - de.haeckerfelix.Fragments
 
           # - io.github.nozwock.Packet
           # - io.github.kolunmi.Bazaar

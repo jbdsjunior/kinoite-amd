@@ -1,48 +1,75 @@
 modules:
+  - type: dnf
+    repos:
+      copr:
+        - atim/starship
+    install:
+      packages:
+        - starship
+
+  # # google chrome
+  # - type: script
+  #   snippets:
+  #     - "dnf5 install -y fedora-workstation-repositories"
+  #     - "dnf5 config-manager setopt google-chrome.enabled=1"
+  #     - "dnf5 install -y google-chrome-stable"
+
   - type: rpm-ostree
-    # Remoção de bloatware ou duplicatas
     remove:
-      - firefox # Usar versão Flatpak (mais segura)
+      - firefox
       - firefox-langpacks
-      - htop # Prefira o btop ou fastfetch
+      - htop
       - nvtop
+
+      # - fcitx5-chinese-addons
+      # - fcitx5-gtk
+      - fcitx5-configtool
+      - fcitx5-hangul
+      - fcitx5-libthai
+      - fcitx5-mozc
+      - fcitx5-qt
+      - fcitx5-sayura
+      - fcitx5-unikey
+      - kcm-fcitx5
 
     install:
       # --- Essenciais do Sistema ---
-      - langpacks-pt_BR # Traduções para Português
-      - distrobox # Containers para terminal (Ubuntu, Arch, etc)
-      - fastfetch # Exibe info do sistema (substituto bonito do neofetch)
-      - lm_sensors # Monitoramento de temperatura/hardware
-      - kmodtool # Ferramentas para módulos de kernel
-      - akmods # Compilação automática de módulos (drivers)
+      - langpacks-pt_BR
+      - distrobox
+      - fastfetch
+      - lm_sensors
+      - kmodtool
+      - akmods
+
+      - plasma-discover-rpm-ostree
+      - network-manager-applet # To customize MAC address randomization with a GUI
 
       # --- Ferramentas Úteis ---
-      # - podman-compose # Orquestração de containers (alternativa ao docker-compose)
-      - rclone # Sincronização com nuvem (GDrive, OneDrive) via terminal
-      - unrar
-      - p7zip
-      - p7zip-plugins
+      - rclone
       - icoextract-thumbnailer
-      - libdvdcss
+
+      # - mesa-va-drivers-freeworld
+      # - mesa-vdpau-drivers-freeworld
+
       # --- Multimídia (FFmpeg Completo) ---
-      - fdk-aac
-      - ffmpeg # O "canivete suíço" de vídeo/áudio
-      - ffmpeg-libs # Bibliotecas essenciais
-      - ffmpegthumbnailer # Gera miniaturas de vídeo no explorador de arquivos
-      - libavcodec-freeworld # Codecs adicionais não-livres
+      # - fdk-aac
+      - ffmpeg
+      - ffmpeg-libs
+      - ffmpegthumbnailer
+      - libavcodec-freeworld
 
       # Áudio Bluetooth de alta qualidade
-      - pipewire-codec-aptx
+      # - pipewire-codec-aptx
 
       # --- Suporte a DVD/Vídeo ---
-      - libdvdcss # Necessário para ler DVDs protegidos
+      - libdvdcss
 
       # --- Plugins GStreamer (Para compatibilidade de Apps GNOME/KDE) ---
       - gstreamer1-plugins-bad-free-extras
       - gstreamer1-plugins-bad-freeworld
       - gstreamer1-plugins-ugly
-      - gstreamer1-vaapi # Aceleração de hardware de vídeo
-      - gstreamer1-plugin-openh264 # Codec H.264 (padrão da web)
+      - gstreamer1-vaapi
+      - gstreamer1-plugin-openh264
 
       # Fonts #############################
       - rsms-inter-fonts

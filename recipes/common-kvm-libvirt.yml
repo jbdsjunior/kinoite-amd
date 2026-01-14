@@ -1,21 +1,26 @@
 modules:
-  - type: rpm-ostree
+  - type: dnf
     install:
-      # --- Base KVM/QEMU ---
-      - qemu-kvm # Virtualizador nativo
-      - libvirt # Serviço principal
-      - libvirt-client # Ferramentas de terminal (virsh)
+      packages:
+        - "@virtualization"
 
-      # --- Interface & Tools ---
-      - virt-manager # Interface Gráfica
-      - virt-install # Instalação via CLI
+  # - type: rpm-ostree
+  #   install:
+  #     # --- Base KVM/QEMU ---
+  #     - qemu-kvm # Virtualizador nativo
+  #     - libvirt # Serviço principal
+  #     - libvirt-client # Ferramentas de terminal (virsh)
 
-      # --- Suporte Moderno ---
-      - edk2-ovmf # BIOS UEFI
-      - swtpm # Emulador TPM (Win11)
-      - guestfs-tools # Edição de imagens de disco
-      # - libguestfs-tools
-      # - bridge-utils
+  #     # --- Interface & Tools ---
+  #     - virt-manager # Interface Gráfica
+  #     - virt-install # Instalação via CLI
+
+  #     # --- Suporte Moderno ---
+  #     - edk2-ovmf # BIOS UEFI
+  #     - swtpm # Emulador TPM (Win11)
+  #     - guestfs-tools # Edição de imagens de disco
+  #     # - libguestfs-tools
+  #     # - bridge-utils
 
   - type: systemd
     system:
@@ -25,10 +30,10 @@ modules:
 
   # --- Injeção do Arquivo Just ---
   # Copia o arquivo da pasta 'files/just' do repo para o sistema
-  - type: files
-    files:
-      - source: just/virt-setup.just
-        destination: /usr/share/ublue-os/just/60-kvm-setup.just
+  # - type: files
+  #   files:
+  #     - source: just/virt-setup.just
+  #       destination: /usr/share/ublue-os/just/60-kvm-setup.just
 
   # --- Otimizações AMD ---
   - type: kargs
