@@ -10,6 +10,7 @@ modules:
 
       # Ferramentas: Remove o htop para usar alternativas (btop/nvtop)
       - htop
+      - nvtop
 
       # --- SWAP DE MULTIMÍDIA E DRIVERS ---
       # Removemos as versões "free" (limitadas por patentes) do Fedora/uBlue
@@ -59,7 +60,6 @@ modules:
 
       # Áudio Bluetooth (AptX / AAC melhorado)
       - pipewire-codec-aptx
-        # SE DER ERRO: Remova esta linha, pois o 'fdk-aac' acima já cobre.
 
       # --- Plugins GStreamer (Para compatibilidade GNOME/KDE) ---
       - gstreamer1-plugins-bad-free-extras
