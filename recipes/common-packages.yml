@@ -1,53 +1,83 @@
 modules:
   - type: rpm-ostree
+    # -------------------------------------------------------------------------
+    # SEÇÃO 1: REMOÇÕES (Debloat e Preparação para Swap)
+    # -------------------------------------------------------------------------
     remove:
+      # Navegador: Remove o Firefox RPM para usar a versão Flatpak (Padrão uBlue)
       - firefox
       - firefox-langpacks
+
+      # Ferramentas: Remove o htop para usar alternativas (btop/nvtop)
       - htop
 
+      # --- SWAP DE MULTIMÍDIA E DRIVERS ---
+      # Removemos as versões "free" (limitadas por patentes) do Fedora/uBlue
+      # para permitir a instalação das versões "freeworld" completas do RPM Fusion.
+      - fdk-aac-free # Codec AAC limitado
+      - libavcodec-free # Codecs de vídeo limitados
+      - libavdevice-free
+      - libavfilter-free
+      - libavformat-free
+      - libavutil-free
+      - libpostproc-free
+      - libswresample-free
+      - libswscale-free
+      - ffmpeg-free # FFmpeg limitado
+      - mesa-va-drivers # Aceleração de vídeo limitada (AMD/Intel)
+
+    # -------------------------------------------------------------------------
+    # SEÇÃO 2: INSTALAÇÕES (O que falta na uBlue)
+    # -------------------------------------------------------------------------
     install:
       # --- Essenciais do Sistema ---
-      - langpacks-pt_BR
-      - distrobox
-      - fastfetch
-      - lm_sensors
-      - kmodtool
-      - akmods
+      - langpacks-pt_BR # Traduções para Português
+      - terra-release # Gerenciamento de chaves do repo Terra (Fyra)
 
-      # --- Performance (Destaque do Ultramarine) ---
-      - system76-scheduler # NOVO: Otimiza a prioridade da CPU para o app em foco (reduz lags)
+      # Nota: 'distrobox' e 'just' JÁ VÊM na imagem uBlue, não precisa listar aqui.
 
-      # --- Ferramentas Úteis ---
-      - rclone
-      - unrar # NOVO: Essencial para descompactar arquivos .rar (muito comum)
-      - p7zip # NOVO: Suporte a arquivos 7z
-      - p7zip-plugins # NOVO: Plugins extras para 7zip
+      # --- Performance ---
+      - system76-scheduler # Otimiza prioridade de CPU para apps em foco
+      - zstd # Compressão rápida (Útil para manutenção)
 
-      # --- Multimídia e Thumbnails ---
-      - ffmpeg
+      # --- Monitoramento (Substitutos do htop) ---
+      - fastfetch # Info do sistema (estilo neofetch moderno)
+      - nvtop # Monitor de uso de GPU e processos de vídeo
+      - smartmontools # Monitoramento de saúde de SSD/HDD (S.M.A.R.T)
+
+      # --- Codecs e Drivers "Freeworld" (A versão Turbo) ---
+      # Só instalam porque removemos os conflitantes na seção 'remove' acima.
+      - ffmpeg # Versão completa
       - ffmpeg-libs
-      - ffmpegthumbnailer
-      - libavcodec-freeworld
-      - icoextract-thumbnailer # NOVO: Gera miniaturas para arquivos .exe e instaladores Windows (útil no Linux)
+      - fdk-aac # Codec AAC completo (Fraunhofer)
+      - libavcodec-freeworld # Codecs extras
+      - ffmpegthumbnailer # Miniaturas de vídeo rápidas
 
-      # --- Suporte a DVD/Vídeo ---
-      - libdvdcss
+      # Aceleração de Hardware (Crítico para AMD/Intel)
+      - mesa-va-drivers-freeworld
+      - mesa-vdpau-drivers-freeworld
 
-      # --- Codecs de Hardware e Bluetooth (CRÍTICO) ---
-      # Estes pacotes desbloqueiam a aceleração de GPU real para AMD/Intel e áudio bluetooth de alta qualidade
-      - mesa-va-drivers-freeworld # NOVO: Aceleração de vídeo por hardware (VA-API) sem restrições
-      - mesa-vdpau-drivers-freeworld # NOVO: Aceleração VDPAU (comum em players mais antigos)
-      - pipewire-codec-aptx # NOVO: Codec Bluetooth aptX (alta qualidade) para fones de ouvido
-      - libfdk-aac-free # NOVO: Melhor qualidade de áudio AAC
+      # Áudio Bluetooth (AptX / AAC melhorado)
+      - pipewire-codec-aptx
+      - libfdk-aac-free # CUIDADO: O 'fdk-aac' (non-free) substitui este, mas às vezes dependências pedem.
+        # SE DER ERRO: Remova esta linha, pois o 'fdk-aac' acima já cobre.
 
-      # --- Plugins GStreamer ---
+      # --- Plugins GStreamer (Para compatibilidade GNOME/KDE) ---
       - gstreamer1-plugins-bad-free-extras
       - gstreamer1-plugins-bad-freeworld
       - gstreamer1-plugins-ugly
       - gstreamer1-vaapi
       - gstreamer1-plugin-openh264
 
-      # Fonts
+      # --- Ferramentas Extras ---
+      - rclone # Sincronização Cloud
+      - unrar # Descompactar .rar
+      - p7zip # Suporte 7z
+      - p7zip-plugins
+      - icoextract-thumbnailer # Ícones de arquivos .exe
+      - libdvdcss # Leitura de DVDs protegidos
+
+      # --- Fontes ---
       - rsms-inter-fonts
       - rsms-inter-vf-fonts
       - ms-core-fonts
