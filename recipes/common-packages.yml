@@ -16,7 +16,7 @@ modules:
       - akmods # Compilação automática de módulos (drivers)
 
       # --- Ferramentas Úteis ---
-      - podman-compose # Orquestração de containers (alternativa ao docker-compose)
+      # - podman-compose # Orquestração de containers (alternativa ao docker-compose)
       - rclone # Sincronização com nuvem (GDrive, OneDrive) via terminal
 
       # --- Multimídia (FFmpeg Completo) ---
@@ -38,3 +38,4 @@ modules:
       # Fonts #############################
       - rsms-inter-fonts
       - rsms-inter-vf-fonts
+      - ms-core-fonts

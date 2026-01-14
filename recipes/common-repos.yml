@@ -1,11 +1,18 @@
 modules:
   - type: rpm-ostree
-    # repos:
-    #   # VS Code Oficial (.repo)
-    #   - https://packages.microsoft.com/yumrepos/vscode/config.repo
-    #   # Brave Browser Oficial (.repo)
-    #   - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+    repos:
+      # Repositório Terra (Fyra Labs) - Versão para Atomic/Immutable
+      - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+
+      # VS Code Oficial (.repo)
+      # - https://packages.microsoft.com/yumrepos/vscode/config.repo
+
+      # Brave Browser Oficial (.repo)
+      # - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 
     install:
+      # Pacote de release do Terra (Essencial para gerenciar chaves GPG e futuras mudanças de URL)
+      - terra-release
+
       - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-%OS_VERSION%.noarch.rpm
       - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-%OS_VERSION%.noarch.rpm
