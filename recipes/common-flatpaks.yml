@@ -7,9 +7,3 @@ modules:
           title: Flathub
         install:
           - com.brave.Browser
-
-      - scope: system
-        notify: false
-        repo:
-          title: Flathub
-        install:
