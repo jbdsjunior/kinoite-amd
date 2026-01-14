@@ -1,27 +1,28 @@
-- type: dnf
-  install:
-    packages:
-      - "@virtualization"
-- type: rpm-ostree
-  remove:
-    - virt-viewer
+modules:
+  - type: dnf
+    install:
+      packages:
+        - "@virtualization"
+  - type: rpm-ostree
+    remove:
+      - virt-viewer
 
-- type: systemd
-  system:
-    enabled:
-      - libvirtd
-      - qemu-guest-agent
+  - type: systemd
+    system:
+      enabled:
+        - libvirtd
+        - qemu-guest-agent
 
-- type: files
-  files:
-    - source: just/60-kvm-setup.just
-      destination: /usr/share/ublue-os/just/60-kvm-setup.just
+  - type: files
+    files:
+      - source: just/60-kvm-setup.just
+        destination: /usr/share/ublue-os/just/60-kvm-setup.just
 
-- type: kargs
-  kargs:
-    - amd_iommu=on
-    - iommu=pt
-    - kvm_amd.npt=1
-    - kvm_amd.avic=1
-    - kvm_amd.nested=1
-    - kvm_amd.sev=1
+  - type: kargs
+    kargs:
+      - amd_iommu=on
+      - iommu=pt
+      - kvm_amd.npt=1
+      - kvm_amd.avic=1
+      - kvm_amd.nested=1
+      - kvm_amd.sev=1
