@@ -3,6 +3,9 @@ modules:
     install:
       packages:
         - "@virtualization"
+    remove:
+      packages:
+        - virt-viewer
 
   # - type: rpm-ostree
   #   install:
