@@ -5,11 +5,5 @@ base-image: ghcr.io/ublue-os/kinoite-nvidia
 image-version: latest
 
 modules:
-  - type: files
-    files:
-      - source: system
-        destination: /
-
   - from-file: recipe-common.yml
-
   - type: signing
