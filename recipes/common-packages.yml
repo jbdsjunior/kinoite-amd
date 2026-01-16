@@ -25,19 +25,22 @@ modules:
 
       # --- Interface Gráfica e Fontes ---
       - plasma-discover-rpm-ostree
-      - icoextract-thumbnailer
+      - icoextract-thumbnailer # Repositório Terra (Fyra Labs)
 
       - fira-code-fonts
       - rsms-inter-fonts
       - rsms-inter-vf-fonts
-      - ms-core-fonts
+
+      - ms-core-fonts # Repositório Terra (Fyra Labs)
 
       # --- Multimídia (Complementos ao Negativo17) ---
       - lame
       - libdvdcss
 
-      # --- GStreamer (Nomes padrão para compatibilidade com Negativo17) ---
-      - gstreamer1-plugins-bad-free-extras
-      - gstreamer1-plugins-bad
+      # --- GStreamer ---
+      # Bad & Ugly (Versões completas via Negativo17)
+      # - gstreamer1-plugins-bad
       - gstreamer1-plugins-ugly
+
+      # Aceleração de Hardware
       - gstreamer1-plugin-openh264
