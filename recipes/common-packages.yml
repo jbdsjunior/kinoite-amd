@@ -7,13 +7,6 @@ modules:
       packages:
         - starship
 
-  # --- google chrome ---
-  # - type: script
-  #   snippets:
-  #     - "dnf5 install -y fedora-workstation-repositories"
-  #     - "dnf5 config-manager setopt google-chrome.enabled=1"
-  #     - "dnf5 install -y google-chrome-stable"
-
   - type: rpm-ostree
     remove:
       - firefox
@@ -22,46 +15,29 @@ modules:
       - nvtop
 
     install:
-      # --- Essenciais do Sistema e Drivers ---
+      # --- Sistema e Utilitários ---
       - langpacks-pt_BR
-      - distrobox
       - fastfetch
       - lm_sensors
       - kmodtool
       - akmods
-
-      - plasma-discover-rpm-ostree
-
-      - ffmpeg
-      - ffmpeg-libs
-      - libavcodec-freeworld
-
-
-      # - pipewire-codec-aptx
-      - lame # Encoder MP3
-      # libvpx e opus já são nativos do sistema, não é necessário listar
-
-
-      - libdvdcss
-
-      # --- Plugins GStreamer ---
-      - gstreamer1-plugins-bad-free-extras
-      - gstreamer1-plugins-bad-freeworld
-      - gstreamer1-plugins-ugly
-      - gstreamer1-vaapi
-      - gstreamer1-plugin-openh264
-
-      # --- Ferramentas de Mídia ---
-      - ffmpegthumbnailer # Gerador de thumbnails de vídeo
-      - icoextract-thumbnailer # Gerador de thumbnails para arquivos .exe/.iso
-
-      # --- Ferramentas Úteis (CLI) ---
       - rclone
 
-      # --- Fontes ---
+      # --- Interface Gráfica e Fontes ---
+      - plasma-discover-rpm-ostree
+      - icoextract-thumbnailer
+
+      - fira-code-fonts
       - rsms-inter-fonts
       - rsms-inter-vf-fonts
       - ms-core-fonts
 
-      # - mesa-va-drivers-freeworld
-      # - mesa-vdpau-drivers-freeworld
+      # --- Multimídia (Complementos ao Negativo17) ---
+      - lame
+      - libdvdcss
+
+      # --- GStreamer (Nomes padrão para compatibilidade com Negativo17) ---
+      - gstreamer1-plugins-bad-free-extras
+      - gstreamer1-plugins-bad
+      - gstreamer1-plugins-ugly
+      - gstreamer1-plugin-openh264
