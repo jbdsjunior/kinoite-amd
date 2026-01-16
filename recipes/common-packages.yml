@@ -40,9 +40,9 @@ modules:
       - lame
       - libdvdcss
 
-      # - intel-media-driver
-      - mesa-va-drivers-freeworld
-      - mesa-vdpau-drivers-freeworld
+      # --- AMD ---
+      - mesa-va-drivers
+      - mesa-vdpau-drivers
 
       #  --- GStreamer (Versão Completa / Negativo17) ---
       - gstreamer1-plugins-base
