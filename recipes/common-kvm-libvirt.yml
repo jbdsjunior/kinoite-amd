@@ -3,8 +3,9 @@ modules:
     install:
       packages:
         - "@virtualization"
-  - type: rpm-ostree
+  - type: dnf
     remove:
+      packages:
       - virt-viewer
 
   - type: systemd
