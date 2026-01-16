@@ -9,10 +9,15 @@ modules:
 
   - type: rpm-ostree
     remove:
+      # --- Remoções da Base (Sua Correção) ---
       - firefox
       - firefox-langpacks
       - htop
       - nvtop
+      # Removemos os pacotes "capados" do Fedora para evitar conflito
+      - gstreamer1-plugins-bad-free
+      - gstreamer1-plugins-bad-free-libs
+      - gstreamer1-plugins-ugly-free
 
     install:
       # --- Sistema e Utilitários ---
@@ -25,23 +30,19 @@ modules:
 
       # --- Interface Gráfica e Fontes ---
       - plasma-discover-rpm-ostree
-      - icoextract-thumbnailer # Repositório Terra (Fyra Labs)
+      - icoextract-thumbnailer
 
+      # Fontes (Assumindo que configurou o Terra Safe ou Script)
       - fira-code-fonts
       - rsms-inter-fonts
       - rsms-inter-vf-fonts
+      - ms-core-fonts
 
-      - ms-core-fonts # Repositório Terra (Fyra Labs)
-
-      # --- Multimídia (Complementos ao Negativo17) ---
+      # --- Multimídia ---
       - lame
       - libdvdcss
 
-      # --- GStreamer ---
-      - gstreamer1-plugins-bad-free-extras
-      - gstreamer1-plugins-bad-freeworld
+      # --- GStreamer (Versão Completa / Negativo17) ---
+      - gstreamer1-plugins-bad
       - gstreamer1-plugins-ugly
-      - gstreamer1-vaapi
-
-      # Aceleração de Hardware
-      - gstreamer1-plugin-openh264
+      # - gstreamer1-plugin-openh264
