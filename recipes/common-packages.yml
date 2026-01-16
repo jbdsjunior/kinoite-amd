@@ -7,19 +7,17 @@ modules:
       packages:
         - starship
 
-  - type: rpm-ostree
+  - type: dnf
     remove:
+      packages:
       # --- Remoções da Base (Sua Correção) ---
       - firefox
       - firefox-langpacks
       - htop
       - nvtop
-      # Removemos os pacotes "capados" do Fedora para evitar conflito
-      - gstreamer1-plugins-bad-free
-      - gstreamer1-plugins-bad-free-libs
-      - gstreamer1-plugins-ugly-free
 
     install:
+      packages:
       # --- Sistema e Utilitários ---
       - langpacks-pt_BR
       - fastfetch
@@ -42,7 +40,7 @@ modules:
       - lame
       - libdvdcss
 
-      # --- GStreamer (Versão Completa / Negativo17) ---
+      #  --- GStreamer (Versão Completa / Negativo17) ---
       - gstreamer1-plugins-bad
       - gstreamer1-plugins-ugly
-      # - gstreamer1-plugin-openh264
+      - gstreamer1-plugin-openh264
