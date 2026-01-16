@@ -38,9 +38,11 @@ modules:
       - libdvdcss
 
       # --- GStreamer ---
-      # Bad & Ugly (Versões completas via Negativo17)
-      # - gstreamer1-plugins-bad
+
+      - gstreamer1-plugins-bad-free-extras
+      - gstreamer1-plugins-bad-freeworld
       - gstreamer1-plugins-ugly
+      - gstreamer1-vaapi
 
       # Aceleração de Hardware
       - gstreamer1-plugin-openh264
