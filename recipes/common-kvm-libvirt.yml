@@ -1,12 +1,11 @@
+---
 modules:
   - type: dnf
     install:
       packages:
         - "@virtualization"
-  - type: dnf
-    remove:
-      packages:
-      - virt-viewer
+      exclude:
+        - virt-viewer
 
   - type: systemd
     system:

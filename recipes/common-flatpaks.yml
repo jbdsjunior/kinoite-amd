@@ -1,8 +1,9 @@
+---
 modules:
   - type: default-flatpaks
     configurations:
       - scope: user
-        notify: false
+        notify: true
         repo:
           title: Flathub
         install:

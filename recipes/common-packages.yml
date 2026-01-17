@@ -1,6 +1,48 @@
+---
 modules:
   - type: dnf
+    remove:
+      packages:
+        - firefox
+        - firefox-langpacks
+        - htop
+        - nvtop
+
+    install:
+      packages:
+        - langpacks-pt_BR
+        - fastfetch
+        - lm_sensors
+        - rclone
+
+        - kmodtool
+        - akmods
+
+        - mesa-va-drivers
+        - mesa-vdpau-drivers
+
+        - rsms-inter-fonts
+        - rsms-inter-vf-fonts
+
+  - type: dnf
+    install:
+      packages:
+        - gstreamer1-plugins-bad
+        - gstreamer1-plugins-ugly
+        - gstreamer1-plugin-openh264
+
+        - libdvdcss
+
+        - x264
+        - x265
+        - flac
+
+        - lame
+        - opus
+
+  - type: dnf
     repos:
+      cleanup: true
       copr:
         - atim/starship
     install:
@@ -8,50 +50,19 @@ modules:
         - starship
 
   - type: dnf
-    remove:
-      packages:
-      # --- Remoções da Base (Sua Correção) ---
-      - firefox
-      - firefox-langpacks
-      - htop
-      - nvtop
-
+    repos:
+      cleanup: true
+      files:
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
     install:
       packages:
-      # --- Sistema e Utilitários ---
-      - langpacks-pt_BR
-      - fastfetch
-      - lm_sensors
-      - kmodtool
-      - akmods
-      - rclone
+        - ms-core-fonts
+        - icoextract-thumbnailer
 
-      # --- Interface Gráfica e Fontes ---
-      # - plasma-discover-rpm-ostree
-      # - icoextract-thumbnailer
-
-      # Fontes (Assumindo que configurou o Terra Safe ou Script)
-      # - fira-code-fonts
-      # - rsms-inter-fonts
-      # - rsms-inter-vf-fonts
-      # - ms-core-fonts
-
-      # --- Multimídia ---
-      # - lame
-      - libdvdcss
-
-      # --- AMD ---
-      # - mesa-va-drivers
-      - mesa-vdpau-drivers
-
-      #  --- GStreamer (Versão Completa / Negativo17) ---
-      # - gstreamer1-plugins-base
-      # - gstreamer1-plugins-good
-      - gstreamer1-plugins-bad
-      - gstreamer1-plugins-ugly
-      - gstreamer1-plugin-openh264
-      # - gstreamer1-libav
-
-      # - p7zip
-      # - p7zip-plugins
-      # - unrar
+  - type: dnf
+    group-install:
+      with-optional: true
+      packages:
+        - hardware-support
+        - fonts
+        - multimedia
