@@ -1,7 +1,7 @@
 # Configura permissões e otimizações para Virtualização (KVM/Libvirt)
 setup-kvm:
     @echo ">> [1/4] Configurando Grupos de Usuário..."
-
+    sudo systemctl restart libvirtd
     sudo usermod -aG libvirt,kvm $USER
 
     @echo ">> [2/4] Otimizando diretório de imagens do sistema (NOCOW)..."
@@ -17,7 +17,7 @@ setup-kvm:
     mkdir -p ${HOME}/.local/share/libvirt/images
     chattr +C ${HOME}/.local/share/libvirt/images
 
-    sudo virsh net-start default
-    sudo virsh net-autostart default
+ #   sudo virsh net-start default
+ #   sudo virsh net-autostart default
 
     @echo ">> [4/4] Concluído! Reinicie o PC para aplicar os grupos."
