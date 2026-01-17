@@ -7,4 +7,5 @@ modules:
         repo:
           title: Flathub
         install:
+          - io.github.kolunmi.Bazaar
           - com.brave.Browser
