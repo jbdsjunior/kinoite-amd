@@ -1,12 +1,6 @@
+---
 modules:
   - type: dnf
-    repos:
-      cleanup: true
-      copr:
-        - atim/starship
-      files:
-        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
-
     remove:
       packages:
         - firefox
@@ -20,34 +14,55 @@ modules:
         - fastfetch
         - lm_sensors
         - rclone
+
         - kmodtool
         - akmods
 
-        - starship # Via atim/starship
-
-        # - plasma-discover-rpm-ostree
         - mesa-va-drivers
         - mesa-vdpau-drivers
 
         - rsms-inter-fonts
         - rsms-inter-vf-fonts
-        - ms-core-fonts # Via Terra
 
+  - type: dnf
+    install:
+      packages:
         - gstreamer1-plugins-bad
         - gstreamer1-plugins-ugly
         - gstreamer1-plugin-openh264
+
         - libdvdcss
-        - lame
-        - opus
-        - flac
+
         - x264
         - x265
+        - flac
 
-        - icoextract-thumbnailer # Via Terra
+        - lame
+        - opus
 
+  - type: dnf
+    repos:
+      cleanup: true
+      copr:
+        - atim/starship
+    install:
+      packages:
+        - starship
+
+  - type: dnf
+    repos:
+      cleanup: true
+      files:
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+    install:
+      packages:
+        - ms-core-fonts
+        - icoextract-thumbnailer
+
+  - type: dnf
     group-install:
       with-optional: true
       packages:
+        # - hardware-support
         - fonts
         - multimedia
-        # - hardware-support
