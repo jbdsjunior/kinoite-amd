@@ -7,7 +7,6 @@ modules:
         - firefox-langpacks
         - htop
         - nvtop
-        - plasma-discover
 
     install:
       packages:
